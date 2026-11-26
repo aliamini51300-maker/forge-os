@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forge OS – Admin Panel</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card: #121826;
+      --border: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --primary: #6366f1;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .login-box, .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      width: 100%;
+      max-width: 420px;
+    }
+    h1 { font-size: 1.5rem; margin-bottom: 8px; }
+    p { color: var(--muted); margin-bottom: 24px; font-size: 0.95rem; }
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .hidden { display: none; }
+    .stat {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .stat-label { color: var(--muted); font-size: 0.85rem; }
+    .stat-value { font-size: 1.4rem; font-weight: 700; margin-top: 4px; }
+    .links { margin-top: 24px; }
+    .links a {
+      display: block;
+      color: var(--primary);
+      text-decoration: none;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="login" class="login-box">
+    <h1>Admin Panel</h1>
+    <p>Enter password to continue</p>
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="checkPassword()">Login</button>
+  </div>
+
+  <div id="panel" class="panel hidden">
+    <h1>Forge OS Admin</h1>
+    <p>Simple overview (connected to Telegram bot)</p>
+    <div class="stat">
+      <div class="stat-label">Main Product</div>
+      <div class="stat-value">Forge OS Pro – 1,490 ⭐</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Bot</div>
+      <div class="stat-value">@ForgeOSShop_bot</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Sales Check</div>
+      <div class="stat-value">Open bot → /sales</div>
+    </div>
+    <div class="links">
+      <a href="https://t.me/ForgeOSShop_bot" target="_blank">Open Telegram Bot</a>
+      <a href="https://aliamini51300-maker.github.io/forge-os/" target="_blank">View Sales Page</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+  </div>
+
+  <script>
+    const PASSWORD = "forge2026";
+    function checkPassword() {
+      const input = document.getElementById("password").value;
+      if (input === PASSWORD) {
+        document.getElementById("login").classList.add("hidden");
+        document.getElementById("panel").classList.remove("hidden");
+        localStorage.setItem("forge_admin", "1");
+      } else {
+        alert("Wrong password");
+      }
+    }
+    function logout() {
+      localStorage.removeItem("forge_admin");
+      location.reload();
+    }
+    if (localStorage.getItem("forge_admin") === "1") {
+      document.getElementById("login").classList.add("hidden");
+      document.getElementById("panel").classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
