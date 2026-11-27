@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Forge OS – Admin Panel</title>
+  <title>پنل مدیریت Forge OS</title>
   <style>
     :root {
       --bg: #0b0f19;
@@ -12,31 +12,30 @@
       --text: #f1f5f9;
       --muted: #94a3b8;
       --primary: #6366f1;
+      --green: #34d399;
+      --orange: #fbbf24;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: system-ui, -apple-system, sans-serif;
+      font-family: system-ui, -apple-system, Tahoma, sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      line-height: 1.7;
     }
-    .login-box, .panel {
+    .container { max-width: 480px; margin: 0 auto; padding: 20px; }
+    .login-box {
+      margin-top: 15vh;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 32px;
-      width: 100%;
-      max-width: 420px;
+      padding: 32px 24px;
     }
-    h1 { font-size: 1.5rem; margin-bottom: 8px; }
-    p { color: var(--muted); margin-bottom: 24px; font-size: 0.95rem; }
+    .login-box h1 { font-size: 1.4rem; margin-bottom: 8px; }
+    .login-box p { color: var(--muted); margin-bottom: 24px; font-size: 0.95rem; }
     input {
       width: 100%;
-      padding: 12px 14px;
+      padding: 14px 16px;
       border-radius: 10px;
       border: 1px solid var(--border);
       background: var(--bg);
@@ -46,7 +45,7 @@
     }
     button {
       width: 100%;
-      padding: 12px;
+      padding: 14px;
       border: none;
       border-radius: 10px;
       background: var(--primary);
@@ -56,51 +55,146 @@
       cursor: pointer;
     }
     .hidden { display: none; }
-    .stat {
-      background: var(--bg);
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 12px;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      padding-top: 10px;
     }
-    .stat-label { color: var(--muted); font-size: 0.85rem; }
-    .stat-value { font-size: 1.4rem; font-weight: 700; margin-top: 4px; }
-    .links { margin-top: 24px; }
+    .header h1 { font-size: 1.3rem; }
+    .logout {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      width: auto;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .card h2 {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+    .stat-row:last-child { border-bottom: none; }
+    .stat-value { font-weight: 600; }
+    .green { color: var(--green); }
+    .orange { color: var(--orange); }
     .links a {
       display: block;
-      color: var(--primary);
-      text-decoration: none;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
       margin-bottom: 10px;
+      color: var(--text);
+      text-decoration: none;
       font-size: 0.95rem;
+    }
+    .note {
+      background: rgba(99,102,241,0.1);
+      border: 1px solid rgba(99,102,241,0.25);
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <div id="login" class="login-box">
-    <h1>Admin Panel</h1>
-    <p>Enter password to continue</p>
-    <input type="password" id="password" placeholder="Password" />
-    <button onclick="checkPassword()">Login</button>
-  </div>
+  <div class="container">
+    <div id="login" class="login-box">
+      <h1>ورود به پنل مدیریت</h1>
+      <p>رمز عبور را وارد کنید</p>
+      <input type="password" id="password" placeholder="رمز عبور" />
+      <button onclick="checkPassword()">ورود</button>
+    </div>
 
-  <div id="panel" class="panel hidden">
-    <h1>Forge OS Admin</h1>
-    <p>Simple overview (connected to Telegram bot)</p>
-    <div class="stat">
-      <div class="stat-label">Main Product</div>
-      <div class="stat-value">Forge OS Pro – 1,490 ⭐</div>
-    </div>
-    <div class="stat">
-      <div class="stat-label">Bot</div>
-      <div class="stat-value">@ForgeOSShop_bot</div>
-    </div>
-    <div class="stat">
-      <div class="stat-label">Sales Check</div>
-      <div class="stat-value">Open bot → /sales</div>
-    </div>
-    <div class="links">
-      <a href="https://t.me/ForgeOSShop_bot" target="_blank">Open Telegram Bot</a>
-      <a href="https://aliamini51300-maker.github.io/forge-os/" target="_blank">View Sales Page</a>
-      <a href="#" onclick="logout()">Logout</a>
+    <div id="panel" class="hidden">
+      <div class="header">
+        <h1>پنل مدیریت Forge OS</h1>
+        <button class="logout" onclick="logout()">خروج</button>
+      </div>
+
+      <div class="card">
+        <h2>وضعیت سیستم</h2>
+        <div class="stat-row">
+          <span>وضعیت سایت</span>
+          <span class="stat-value green">فعال</span>
+        </div>
+        <div class="stat-row">
+          <span>ربات تلگرام</span>
+          <span class="stat-value green">متصل</span>
+        </div>
+        <div class="stat-row">
+          <span>تعداد محصولات</span>
+          <span class="stat-value">۴ محصول</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>محصولات و قیمت‌ها</h2>
+        <div class="stat-row">
+          <span>Forge OS Pro</span>
+          <span class="stat-value">۱٬۹۹۰ ⭐</span>
+        </div>
+        <div class="stat-row">
+          <span>Client Acquisition</span>
+          <span class="stat-value">۹۹۰ ⭐</span>
+        </div>
+        <div class="stat-row">
+          <span>Proposal & Closing</span>
+          <span class="stat-value">۸۹۰ ⭐</span>
+        </div>
+        <div class="stat-row">
+          <span>Delivery Excellence</span>
+          <span class="stat-value">۷۹۰ ⭐</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>بررسی فروش و بازدید</h2>
+        <div class="stat-row">
+          <span>فروش‌ها</span>
+          <span class="stat-value orange">از ربات → /sales</span>
+        </div>
+        <div class="stat-row">
+          <span>بازدید سایت</span>
+          <span class="stat-value orange">نیاز به اتصال آمار</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>دسترسی سریع</h2>
+        <div class="links">
+          <a href="https://t.me/ForgeOSShop_bot" target="_blank">باز کردن ربات تلگرام</a>
+          <a href="https://aliamini51300-maker.github.io/forge-os/" target="_blank">مشاهده صفحه فروش</a>
+          <a href="https://github.com/aliamini51300-maker/forge-os" target="_blank">مخزن گیت‌هاب</a>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>توضیح:</strong><br>
+        فروش‌ها داخل ربات تلگرام ثبت می‌شوند. برای دیدن فروش‌ها وارد ربات شو و دستور /sales را بفرست.<br><br>
+        برای دیدن آمار بازدید دقیق سایت، بعداً می‌توانیم ابزار آمار وصل کنیم.
+      </div>
     </div>
   </div>
 
@@ -111,16 +205,16 @@
       if (input === PASSWORD) {
         document.getElementById("login").classList.add("hidden");
         document.getElementById("panel").classList.remove("hidden");
-        localStorage.setItem("forge_admin", "1");
+        localStorage.setItem("forge_admin_fa", "1");
       } else {
-        alert("Wrong password");
+        alert("رمز اشتباه است");
       }
     }
     function logout() {
-      localStorage.removeItem("forge_admin");
+      localStorage.removeItem("forge_admin_fa");
       location.reload();
     }
-    if (localStorage.getItem("forge_admin") === "1") {
+    if (localStorage.getItem("forge_admin_fa") === "1") {
       document.getElementById("login").classList.add("hidden");
       document.getElementById("panel").classList.remove("hidden");
     }
