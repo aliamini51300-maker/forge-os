@@ -15,6 +15,7 @@
       --muted: #94a3b8;
       --primary: #6366f1;
       --primary2: #818cf8;
+      --green: #34d399;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -46,7 +47,7 @@
       padding: 8px 16px; border-radius: 8px; margin-left: 28px;
     }
     .hero {
-      padding: 100px 0 80px;
+      padding: 100px 0 70px;
       text-align: center;
       background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99,102,241,0.18), transparent);
     }
@@ -59,9 +60,9 @@
       font-size: 0.82rem; font-weight: 600; margin-bottom: 28px;
     }
     .hero h1 {
-      font-size: clamp(2.4rem, 5.5vw, 3.8rem);
-      font-weight: 800; letter-spacing: -1.8px; line-height: 1.1;
-      margin-bottom: 22px;
+      font-size: clamp(2.3rem, 5.2vw, 3.6rem);
+      font-weight: 800; letter-spacing: -1.6px; line-height: 1.12;
+      margin-bottom: 20px;
     }
     .hero h1 em {
       font-style: normal;
@@ -69,8 +70,8 @@
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
     .hero-sub {
-      font-size: 1.15rem; color: var(--muted);
-      max-width: 560px; margin: 0 auto 40px;
+      font-size: 1.12rem; color: var(--muted);
+      max-width: 560px; margin: 0 auto 36px;
     }
     .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
     .btn {
@@ -85,22 +86,22 @@
       background: transparent; color: var(--text);
       border: 1px solid var(--border);
     }
-    .section { padding: 80px 0; }
-    .section-header { text-align: center; margin-bottom: 52px; }
+    .section { padding: 70px 0; }
+    .section-header { text-align: center; margin-bottom: 48px; }
     .section-header h2 {
-      font-size: 2rem; font-weight: 750; letter-spacing: -0.8px; margin-bottom: 12px;
+      font-size: 1.9rem; font-weight: 750; letter-spacing: -0.7px; margin-bottom: 12px;
     }
-    .section-header p { color: var(--muted); max-width: 480px; margin: 0 auto; }
+    .section-header p { color: var(--muted); max-width: 500px; margin: 0 auto; }
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
     }
     .card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 28px;
+      border-radius: 16px;
+      padding: 26px;
       display: flex; flex-direction: column;
       transition: 0.2s;
     }
@@ -114,53 +115,94 @@
       position: relative;
     }
     .card.featured .tag {
-      position: absolute; top: -11px; left: 22px;
+      position: absolute; top: -11px; left: 20px;
       background: var(--primary); color: white;
       font-size: 0.72rem; font-weight: 600;
       padding: 4px 11px; border-radius: 999px;
     }
-    .card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+    .card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
     .card p {
-      color: var(--muted); font-size: 0.92rem;
-      flex-grow: 1; margin-bottom: 22px;
+      color: var(--muted); font-size: 0.9rem;
+      flex-grow: 1; margin-bottom: 20px;
     }
     .price-row {
-      display: flex; align-items: baseline; gap: 6px; margin-bottom: 18px;
+      display: flex; align-items: baseline; gap: 6px; margin-bottom: 16px;
     }
-    .price { font-size: 1.55rem; font-weight: 750; }
-    .price-unit { color: var(--muted); font-size: 0.88rem; }
+    .price { font-size: 1.45rem; font-weight: 750; }
+    .price-unit { color: var(--muted); font-size: 0.85rem; }
     .card .btn { width: 100%; }
-    .how-grid {
+    .trust-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 28px;
+      gap: 20px;
+    }
+    .trust-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      text-align: center;
+    }
+    .trust-item h4 { margin-bottom: 8px; font-size: 1rem; }
+    .trust-item p { color: var(--muted); font-size: 0.88rem; }
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .testimonial {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .testimonial p {
+      color: var(--muted); font-size: 0.95rem; margin-bottom: 16px;
+      font-style: italic;
+    }
+    .testimonial .author { font-weight: 600; font-size: 0.9rem; }
+    .guarantee {
+      background: rgba(52, 211, 153, 0.08);
+      border: 1px solid rgba(52, 211, 153, 0.25);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .guarantee h3 { color: var(--green); margin-bottom: 10px; }
+    .guarantee p { color: var(--muted); font-size: 0.95rem; }
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
     }
     .how-item { text-align: center; }
     .how-num {
-      width: 44px; height: 44px;
+      width: 42px; height: 42px;
       background: rgba(99,102,241,0.12);
       color: var(--primary2);
-      border-radius: 12px;
+      border-radius: 11px;
       display: flex; align-items: center; justify-content: center;
-      font-weight: 700; margin: 0 auto 16px;
+      font-weight: 700; margin: 0 auto 14px;
     }
     .how-item h4 { margin-bottom: 8px; }
-    .how-item p { color: var(--muted); font-size: 0.92rem; }
+    .how-item p { color: var(--muted); font-size: 0.9rem; }
     .cta-box {
       background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(34,211,238,0.08));
       border: 1px solid rgba(99,102,241,0.25);
-      border-radius: 20px;
-      padding: 48px 32px;
+      border-radius: 18px;
+      padding: 44px 28px;
       text-align: center;
     }
-    .cta-box h2 { font-size: 1.8rem; margin-bottom: 12px; }
-    .cta-box p { color: var(--muted); margin-bottom: 28px; }
+    .cta-box h2 { font-size: 1.7rem; margin-bottom: 12px; }
+    .cta-box p { color: var(--muted); margin-bottom: 26px; }
     footer {
       border-top: 1px solid var(--border);
-      padding: 36px 0;
+      padding: 32px 0;
       text-align: center;
       color: var(--muted);
-      font-size: 0.88rem;
+      font-size: 0.86rem;
     }
     @media (max-width: 640px) {
       .nav-links { display: none; }
@@ -174,7 +216,7 @@
       <div class="logo">Forge<span>OS</span></div>
       <div class="nav-links">
         <a href="#products">Products</a>
-        <a href="#how">How it works</a>
+        <a href="#trust">Why Forge OS</a>
         <a href="https://t.me/ForgeOSShop_bot" class="nav-cta">Open Bot</a>
       </div>
     </div>
@@ -182,9 +224,9 @@
 
   <section class="hero">
     <div class="container">
-      <div class="badge">AI Operating Systems for Freelancers</div>
-      <h1>Build a better<br>freelance business<br>with <em>structured AI systems</em></h1>
-      <p class="hero-sub">Professional systems that help you attract stronger clients, close better projects, deliver faster, and charge what you’re worth.</p>
+      <div class="badge">Built for serious freelancers</div>
+      <h1>Stop working harder.<br>Start working with <em>better systems</em>.</h1>
+      <p class="hero-sub">Forge OS gives freelancers structured AI systems to attract better clients, write stronger proposals, deliver faster, and charge with confidence.</p>
       <div class="hero-actions">
         <a href="#products" class="btn btn-primary">View Systems</a>
         <a href="https://t.me/ForgeOSShop_bot" class="btn btn-ghost">Buy on Telegram</a>
@@ -196,13 +238,13 @@
     <div class="container">
       <div class="section-header">
         <h2>Professional Systems</h2>
-        <p>Each product is a complete working system, not a random list of prompts.</p>
+        <p>Each product is a complete working system — not a random list of prompts.</p>
       </div>
       <div class="products">
         <div class="card featured">
-          <div class="tag">Core System</div>
+          <div class="tag">Most Complete</div>
           <h3>Forge OS Pro</h3>
-          <p>The complete operating system for freelancers. Positioning, acquisition, proposals, delivery, pricing, client management and weekly rhythm — in one structured system.</p>
+          <p>The full operating system for freelancers. Positioning, acquisition, proposals, delivery, pricing, client management and weekly rhythm in one structured system.</p>
           <div class="price-row">
             <div class="price">1,990</div>
             <div class="price-unit">Stars</div>
@@ -211,7 +253,7 @@
         </div>
         <div class="card">
           <h3>Client Acquisition System</h3>
-          <p>A full system to define your ideal client, improve your profile, create outreach, and run consistent acquisition.</p>
+          <p>Define your ideal client, improve your profile, build outreach, and create a consistent client acquisition process.</p>
           <div class="price-row">
             <div class="price">990</div>
             <div class="price-unit">Stars</div>
@@ -220,7 +262,7 @@
         </div>
         <div class="card">
           <h3>Proposal & Closing System</h3>
-          <p>Win more projects with stronger discovery, better proposals, and professional objection handling.</p>
+          <p>Win more projects with stronger discovery questions, better proposals, and professional objection handling.</p>
           <div class="price-row">
             <div class="price">890</div>
             <div class="price-unit">Stars</div>
@@ -229,7 +271,7 @@
         </div>
         <div class="card">
           <h3>Delivery Excellence System</h3>
-          <p>Protect your time, deliver faster, control revisions, and close projects professionally.</p>
+          <p>Protect your time, deliver faster, control revisions, and close projects more professionally.</p>
           <div class="price-row">
             <div class="price">790</div>
             <div class="price-unit">Stars</div>
@@ -240,27 +282,81 @@
     </div>
   </section>
 
-  <section class="section" id="how">
+  <section class="section" id="trust">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why freelancers use Forge OS</h2>
+        <p>Built to solve real problems freelancers face every week</p>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-item">
+          <h4>Clear structure</h4>
+          <p>Every system has a defined process so you know exactly what to do next.</p>
+        </div>
+        <div class="trust-item">
+          <h4>Ready to use</h4>
+          <p>No theory overload. Open the file, copy the prompt, and apply it immediately.</p>
+        </div>
+        <div class="trust-item">
+          <h4>Built for freelancers</h4>
+          <p>Focused on client work, pricing, delivery and consistency — not generic AI tips.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>What users say</h2>
+        <p>Early feedback from freelancers testing the systems</p>
+      </div>
+      <div class="testimonials">
+        <div class="testimonial">
+          <p>"Finally something structured. I used the proposal system on two projects and both felt clearer and more professional."</p>
+          <div class="author">— Independent designer</div>
+        </div>
+        <div class="testimonial">
+          <p>"The acquisition prompts helped me stop writing random outreach messages and start with a real profile of who I want to work with."</p>
+          <div class="author">— Freelance writer</div>
+        </div>
+        <div class="testimonial">
+          <p>"I like that it doesn’t try to do everything at once. Each system solves one specific problem."</p>
+          <div class="author">— Developer & consultant</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="guarantee">
+        <h3>Simple promise</h3>
+        <p>If the system is not useful for your freelance work, you can message the bot and request support. These systems are built to be practical, not theoretical.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container">
       <div class="section-header">
         <h2>How it works</h2>
-        <p>Simple path from interest to implementation</p>
       </div>
       <div class="how-grid">
         <div class="how-item">
           <div class="how-num">1</div>
           <h4>Choose a system</h4>
-          <p>Pick the system that matches your current bottleneck.</p>
+          <p>Pick the one that matches your current bottleneck.</p>
         </div>
         <div class="how-item">
           <div class="how-num">2</div>
           <h4>Pay in Telegram</h4>
-          <p>Complete payment with Stars inside the official bot.</p>
+          <p>Complete payment with Stars inside the bot.</p>
         </div>
         <div class="how-item">
           <div class="how-num">3</div>
-          <h4>Install the system</h4>
-          <p>Receive the files and start using the prompts immediately.</p>
+          <h4>Start using it</h4>
+          <p>Receive the files and apply the system immediately.</p>
         </div>
       </div>
     </div>
@@ -269,8 +365,8 @@
   <section class="section">
     <div class="container">
       <div class="cta-box">
-        <h2>Ready to upgrade how you work?</h2>
-        <p>Start with Forge OS Pro or choose the system that solves your biggest current problem.</p>
+        <h2>Ready to work with better systems?</h2>
+        <p>Start with Forge OS Pro, or choose the system that solves the problem costing you the most right now.</p>
         <a href="https://t.me/ForgeOSShop_bot" class="btn btn-primary">Open Telegram Bot</a>
       </div>
     </div>
